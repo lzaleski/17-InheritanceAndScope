@@ -1,5 +1,5 @@
 ###############################################################################
-# TODO: 1. (4 pts)
+# DONE: 1. (4 pts)
 #
 #   For this module, we are going to build off our Pet class that we created in
 #   m2 of the session 16 coding exercises.
@@ -26,9 +26,28 @@
 #
 #   Once you have done this, then change the above _TODO_ to DONE.
 ###############################################################################
+class Pet:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
 
+    def __str__ (self):
+        return f"""
+Name: {self.name},
+Age: {self.age}
+"""
+    
+    def speak(self):
+        print(f"{self.name}: The pet is looking at you.")
+
+class Dog(Pet):
+    def fetch(self):
+        print(f"{self.name} ran to get the stick!")
+    
+    def speak(self):
+        print(f"{self.name}: Bark! Bark! Bark!")
 ###############################################################################
-# TODO: 2. (4 pts)
+# DONE: 2. (4 pts)
 #
 #   Now, write your own class of whatever type of pet you wish.
 #
@@ -46,9 +65,20 @@
 #
 #   Once you have done this, then change the above _TODO_ to DONE.
 ###############################################################################
+class Bird(Pet):
+    def __init__(self, name, age, weight, color):
+        super().__init__(name, age)
+        self.weight = weight
+        self.color = color
+    
+    def fly(self): 
+        print(f"{self.name} takes flight and vanishes into the sky, all {self.weight} pounds disappear. Vwoooooshsh.")
+    
+    def back(self):
+        print(f"A flash of {self.color} is seen, and then suddenly {self.name} returns to you.")
 
 ###############################################################################
-# TODO: 3. (4 pts)
+# DONE: 3. (4 pts)
 #
 #   Now let's use our classes!
 #
@@ -72,3 +102,14 @@
 #   Once you have done this, then change the above _TODO_ to DONE.
 ###############################################################################
 
+def main():
+    dog = Dog("Reginald", 1)
+    print(dog)
+    midge = Bird("Midge", 2, .9, "brown")
+    print(midge)
+    dog.speak()
+    dog.fetch()
+    midge.fly()
+    midge.back()
+
+main()
